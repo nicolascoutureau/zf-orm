@@ -3,3 +3,4 @@
 /.settings
 /.vagrant
 /vendor
+/composer.lock
