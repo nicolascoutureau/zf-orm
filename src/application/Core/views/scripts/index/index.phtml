@@ -1,1 +1,14 @@
-<h1>Index</h1>
+<?php $this->headTitle('Page d\'accueil')  ?>
+
+<h1>Page d'accueil</h1>
+<a class="button--primary">Click me</a>
+
+<script type="text/javascript">
+	<?php $this->inlineScript()->captureStart(); ?>
+		$(document).ready(function(){
+			$('.button--primary').on('click', function(e){
+				alert('clicked');
+			})
+		});
+	<?php $this->inlineScript()->captureEnd(); ?>
+</script>
