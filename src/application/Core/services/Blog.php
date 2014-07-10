@@ -51,7 +51,6 @@ class Core_Service_Blog
 			throw new Exception("\$id doit etre numérique et supérieur à 1", 1);
 		}
 
-
 		$mapper = new Core_Model_Mapper_Article();
 		$article = $mapper->find($id);
 
