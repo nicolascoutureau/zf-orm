@@ -16,7 +16,19 @@ class Core_ArticleController extends Zend_Controller_Action
 	function indexAction()
 	{
 
-		$this->view->articles = $this->blogSvc->fetchLastArticles(2);
+		$this->view->articles = $this->blogSvc->fetchLastArticles(10);
+
+		$newArticle = new Core_Model_Article();
+		
+		$categorie = new Core_Model_Categorie();
+		$categorie->setId(1);
+
+		$newArticle->setTitle('test article')
+				   ->setContent('test save')
+				   ->setCategorie($categorie);
+
+		$this->blogSvc->saveArticle($newArticle);
+
 	}
 
 
@@ -34,6 +46,7 @@ class Core_ArticleController extends Zend_Controller_Action
 
 		$this->view->article = $article;
 	}
+
 
 
 }
