@@ -26,6 +26,8 @@ class Core_Model_Article
 	 */
 	private $categorie;
 
+	private $auteur;
+
 
 	public function getId() {
 		return $this->id;
@@ -92,4 +94,29 @@ class Core_Model_Article
 
         return $this;
     }
+
+    /**
+     * Sets the value of auteur.
+     *
+     * @param mixed $auteur the auteur
+     *
+     * @return self
+     */
+    public function setAuteur(Core_Model_Auteur $auteur)
+    {
+        $this->auteur = $auteur;
+
+        return $this;
+    }
+
+    /**
+     * Gets the value of auteur.
+     *
+     * @return mixed
+     */
+    public function getAuteur()
+    {
+        return $this->auteur;
+    }
+
 }

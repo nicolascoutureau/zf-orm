@@ -3,7 +3,8 @@
 	"version" : "0.0.1",
 	"require" : {
 		"zendframework/zendframework1" : "=1.12.7",
-		"joseph-lenton/php-error": "dev-master"
+		"joseph-lenton/php-error": "dev-master",
+		"jokkedk/zfdebug": "1.6.2"
 	},
 	"repositories" : [ {
 		"type" : "composer",

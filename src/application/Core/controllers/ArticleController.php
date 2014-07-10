@@ -23,9 +23,13 @@ class Core_ArticleController extends Zend_Controller_Action
 		$categorie = new Core_Model_Categorie();
 		$categorie->setId(1);
 
+		$auteur = new Core_Model_Auteur();
+		$auteur->setId(1);
+
 		$newArticle->setTitle('test article')
 				   ->setContent('test save')
-				   ->setCategorie($categorie);
+				   ->setCategorie($categorie)
+				   ->setAuteur($auteur);
 
 		$this->blogSvc->saveArticle($newArticle);
 

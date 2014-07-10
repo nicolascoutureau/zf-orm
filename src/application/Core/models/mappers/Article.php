@@ -71,10 +71,20 @@ class Core_Model_Mapper_Article
 				->setTitle($row['article_title'])
 				->setContent($row['article_content']);
 
+
+		//CATEGORIE
 		$rowCategorie = $row->findParentRow('Core_Model_DbTable_Categorie');
 		$mapperCategorie = new Core_Model_Mapper_Categorie;
 		$categorie = $mapperCategorie->rowToObject($rowCategorie);
-		
+
+		//AUTEUR
+		$rowAuteur = $row->findParentRow('Core_Model_DbTable_Auteur');
+		$mapperAuteur = new Core_Model_Mapper_Auteur;
+		$auteur = $mapperAuteur->rowToObject($rowAuteur);
+
+		$article->setAuteur($auteur);
+
+
 		$categorie->addArticle($article);
 		$article->setCategorie($categorie);
 
@@ -89,6 +99,7 @@ class Core_Model_Mapper_Article
 			'article_title' => $article->getTitle(),
 			'article_content' => $article->getContent(),
 			'categorie_id' => $article->getCategorie()->getId(),
+			'auteur_id' => $article->getAuteur()->getId(),
 		);
 	}
 
