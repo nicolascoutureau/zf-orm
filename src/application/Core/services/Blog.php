@@ -5,6 +5,20 @@
 class Core_Service_Blog
 {
 
+	private $dbAdapter;
+
+	/**
+	 * [__construct description]
+	 */
+	public function __construct()
+	{
+		$this->dbAdapter = Zend_Controller_Front::getInstance()
+			->getParam('bootstrap')
+			->getResource('multidb')
+			->getDb('db1');
+	}
+
+
 	/**
 	 * [fetchLastArticles description]
 	 * @param  integer $count
@@ -13,17 +27,15 @@ class Core_Service_Blog
 	public function fetchLastArticles($count = 5)
 	{
 
-		$article1 = new Core_Model_Article;
-		$article1->setId(1)
-				->setTitle('titre 1')
-				->setContent('contenu 1');
+		$count = (int) $count;
+		if(0 === $count){
+			throw new Exception("\$count doit etre numérique et supérieur à 1", 1);
+		}
 
-		$article2 = new Core_Model_Article;
-		$article2->setId(2)
-				->setTitle('titre 2')
-				->setContent('contenu 2');
-
-		return(array($article1,$article2));
+		$mapper = new Core_Model_Mapper_Article();
+		$articles = $mapper->fetchAll(null,'article_id DESC', $count);
+		
+		return $articles;
 	}
 
 
@@ -40,24 +52,13 @@ class Core_Service_Blog
 		}
 
 
-		$dbAdapter = Zend_Controller_Front::getInstance()
-			->getParam('bootstrap')
-			->getResource('multidb')
-			->getDb('db1');
-
-		$sql = "SELECT * FROM article WHERE article_id = ?";
-		$result = $dbAdapter->fetchAll($sql, $id);
-
-		if(0 === count($result)){
-			return false;
-		}
-
-		$article = new Core_Model_Article;
-		$article->setId($id)
-				->setTitle($result[0]['article_title'])
-				->setContent($result[0]['article_content']);
+		$mapper = new Core_Model_Mapper_Article();
+		$article = $mapper->find($id);
 
 
 		return $article;
+
+
+
 	}
 }

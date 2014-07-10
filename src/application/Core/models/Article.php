@@ -18,11 +18,14 @@ class Core_Model_Article
 	/**
 	 * @var string
 	 */
-	
 	private $content;
+	
 	/**
-	 * @return the $id
+	 * [$categorie description]
+	 * @var Core_Model_Categorie
 	 */
+	private $categorie;
+
 
 	public function getId() {
 		return $this->id;
@@ -66,10 +69,27 @@ class Core_Model_Article
 		return $this;
 	}
 
+    /**
+     * Gets the value of categorie.
+     *
+     * @return mixed
+     */
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
 
+    /**
+     * Sets the value of categorie.
+     *
+     * @param mixed $categorie the categorie
+     *
+     * @return self
+     */
+    public function setCategorie(Core_Model_Categorie $categorie)
+    {
+        $this->categorie = $categorie;
 
-
-
-
-
+        return $this;
+    }
 }
