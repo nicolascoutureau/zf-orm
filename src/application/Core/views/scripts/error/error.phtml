@@ -1,1 +1,16 @@
-<h1>Erreur</h1>
+<div class="highlight-module  highlight-module--left   highlight-module--remember  ">
+    <div class="highlight-module__container  icon-exclamation ">
+        <div class="highlight-module__content   g-wide--push-1 g-wide--pull-1  g-medium--pull-1   ">
+            <p class="highlight-module__title"> Erreur</p>
+            <ul class="highlight-module__list">
+                <li><?= $this->message ?></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<?php if('development' === APP_ENV): ?>
+	<?= $this->exception->getMessage() ?>
+	<pre><?= $this->exception->getTraceAsString() ?></pre>
+<?php endif; ?>
+
