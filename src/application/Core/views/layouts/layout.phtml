@@ -1,4 +1,4 @@
-<!doctype html>
+<?= $this->doctype() ?>
 <html>
     <head>
         <meta charset="utf-8">
@@ -62,11 +62,7 @@
 
         <nav class="navdrawer-container promote-layer">
             <h4>Navigation</h4>
-            <ul>
-                <li><a href="/">Accueil</a></li>
-                <li><a href="/articles">Articles</a></li>
-                <li><a href="/styleguide/index.html">Style Guide</a></li>
-            </ul>
+            <?= $this->navigation()->menu()->setUlClass('main-nav') ?>
         </nav>
 
         <main>

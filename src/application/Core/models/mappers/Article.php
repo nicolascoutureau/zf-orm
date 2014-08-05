@@ -3,10 +3,10 @@
 /**
 * 	
 */
-class Core_Model_Mapper_Article
+class Core_Model_Mapper_Article extends Core_Model_Mapper_MapperAbstract
 {	
 
-	private $dbtable;
+	protected $dbtable;
 
 
 	public function __construct()
@@ -23,18 +23,6 @@ class Core_Model_Mapper_Article
 		return $article;
 	}
 
-	public function fetchAll($where=null,$order=null,$count=null,$offset=null)
-	{
-
-		$rowset = $this->dbtable->fetchAll($where,$order, $count, $offset);
-		$articles = array();
-		foreach ($rowset as $row) {
-			$articles[] = $this->rowToObject($row);
-
-		}
-		
-		return $articles;
-	}
 
 
 	public function delete($id)

@@ -25,7 +25,7 @@ class Core_Model_DbTable_Article extends Zend_Db_Table_Abstract
 			'refColumns' => array('auteur_id'),
 			'onUpdate' => self::CASCADE,
 			'onDelete' => self::RESTRICT
-		),
+		)
 	);
 
 }

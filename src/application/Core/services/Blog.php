@@ -63,4 +63,12 @@ class Core_Service_Blog
 		$mapper = new Core_Model_Mapper_Article();
 		$mapper->save($article);
 	}
+
+
+	public function fetchCategories()
+	{
+		$mapper = new Core_Model_Mapper_Categorie();
+		return $mapper->fetchAll();
+
+	}
 }

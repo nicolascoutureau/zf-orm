@@ -3,10 +3,10 @@
 /**
 * 	
 */
-class Core_Model_Mapper_Categorie
+class Core_Model_Mapper_Categorie extends Core_Model_Mapper_MapperAbstract
 {	
 
-	private $dbtable;
+	protected $dbtable;
 
 
 	public function __construct()
@@ -22,5 +22,6 @@ class Core_Model_Mapper_Categorie
 
 		return $categorie;
 	}
+
 
 }

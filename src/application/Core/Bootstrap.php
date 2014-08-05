@@ -19,10 +19,10 @@ class Core_Bootstrap extends Zend_Application_Module_Bootstrap
 	                           //'Cache' => array('backend' => $cache->getBackend()),
 	                           'Exception')
 	    );
-	    $debug = new ZFDebug_Controller_Plugin_Debug($options);
+/*	    $debug = new ZFDebug_Controller_Plugin_Debug($options);*/
 
-	    $this->bootstrap('frontController');
+/*	    $this->bootstrap('frontController');
 	    $frontController = $this->getResource('frontController');
-	    $frontController->registerPlugin($debug);
+	    $frontController->registerPlugin($debug);*/
 	}
 }
