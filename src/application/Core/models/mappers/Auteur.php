@@ -18,7 +18,7 @@ class Core_Model_Mapper_Auteur
 	{
 		$auteur = new Core_Model_Auteur;
 		$auteur->setId($row['auteur_id'])
-				  ->setNom($row['auteur_nom']);
+			   ->setNom($row['auteur_nom']);
 
 		return $auteur;
 	}
