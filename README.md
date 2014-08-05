@@ -1,4 +1,4 @@
 zf-orm
 ======
 
-Réalisation d'un blog sous zend framework 1
+Réalisation d'un blog sous Zend Framework 1

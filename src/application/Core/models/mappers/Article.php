@@ -6,24 +6,11 @@
 class Core_Model_Mapper_Article extends Core_Model_Mapper_MapperAbstract
 {	
 
-	protected $dbtable;
 
+	/*protected $dbTableClassname = 'Core_Model_DbTable_Article';*/
 
-	public function __construct()
-	{
-		$this->dbtable = new Core_Model_DbTable_Article();
-	}
-	
-	public function find($id)
-	{
-	
-		$row = $this->dbtable->find($id)->current();
-		$article = $this->rowToObject($row);
-
-		return $article;
-	}
-
-
+	Const COL_ID = 'article_id';
+	Const COL_NOM = 'article_nom';
 
 	public function delete($id)
 	{
@@ -36,7 +23,7 @@ class Core_Model_Mapper_Article extends Core_Model_Mapper_MapperAbstract
 		return (bool)$row->delete();
 	}
 
-	public function save(Core_Model_Article $article)
+/*	public function save(Core_Model_Article $article)
 	{
 		$origin = $this->dbtable->find($article->getId())->current();
 		$row = $this->objectToRow($article);
@@ -50,7 +37,7 @@ class Core_Model_Mapper_Article extends Core_Model_Mapper_MapperAbstract
 			$this->dbtable->insert($row);
 
 		}
-	}
+	}*/
 
 	public function rowToObject(Zend_Db_Table_Row $row)
 	{
@@ -80,7 +67,7 @@ class Core_Model_Mapper_Article extends Core_Model_Mapper_MapperAbstract
 		return $article;
 	}
 
-	public function objectToRow(Core_Model_Article $article)
+	public function objectToRow(Core_Model_Interface $article)
 	{
 		return array(
 			'article_id' => $article->getId(),

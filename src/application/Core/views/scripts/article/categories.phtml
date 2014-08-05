@@ -1,7 +1,8 @@
 <h2>Catégories</h2>
 
 <?php foreach ($this->categories as $categorie): ?> 
+		
 	
-	<?= $categorie->getNom() ?> </br>
+	<?= $categorie->getNom() ?><small> <?= count($categorie->getArticles()) ?></small> </br>
 
 <?php endforeach ?>
