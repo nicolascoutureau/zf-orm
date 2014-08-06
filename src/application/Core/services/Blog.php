@@ -39,6 +39,18 @@ class Core_Service_Blog
 	}
 
 
+	public function findCategorie($id)
+	{
+		if(0 === (int) $id){
+			throw new Exception("\$id doit etre numérique et supérieur à 1", 1);
+		}
+
+		$mapper = new Core_Model_Mapper_Categorie();
+		return $mapper->find($id);
+
+
+	}
+
 	/**
 	 * @param unknown $id
 	 * @throws Exception
@@ -58,6 +70,18 @@ class Core_Service_Blog
 		return $article;
 	}
 
+	public function fetchArticlesByCategorie($categorieId)
+	{
+		if(0 === (int) $categorieId){
+			throw new Exception("\$id doit etre numérique et supérieur à 1", 1);
+		}
+
+		$mapper = new Core_Model_Mapper_Article();
+		return $mapper->fetchAll("categorie_id = $categorieId");
+
+
+	}
+
 	public function saveArticle(Core_Model_Article $article)
 	{
 		$mapper = new Core_Model_Mapper_Article();
@@ -65,10 +89,38 @@ class Core_Service_Blog
 	}
 
 
-	public function fetchCategories()
+
+	public function fetchCategories($asArray = false)
 	{
 		$mapper = new Core_Model_Mapper_Categorie();
-		return $mapper->fetchAll();
+		$result =  $mapper->fetchAll();
 
+		if(!$asArray){
+			return $result;
+		}else{
+			$resultArray = array();
+			foreach ($result as $categorie) {
+				$resultArray[$categorie->getId()] = $categorie->getNom();
+			}
+			return $resultArray;
+		}
+
+	}
+
+
+	public function fetchAuteurs($asArray = false)
+	{				
+		$mapper = new Core_Model_Mapper_Auteur();
+		$result = $mapper->fetchAll();
+
+		if(!$asArray){
+			return $result;
+		}else{
+			$resultArray = array();
+			foreach ($result as $auteur) {
+				$resultArray[$auteur->getId()] = $auteur->getNom();
+			}
+			return $resultArray;
+		}
 	}
 }

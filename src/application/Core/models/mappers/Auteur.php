@@ -3,16 +3,10 @@
 /**
 * 	
 */
-class Core_Model_Mapper_Auteur
+class Core_Model_Mapper_Auteur extends Core_Model_Mapper_MapperAbstract
 {	
 
-	private $dbtable;
 
-
-	public function __construct()
-	{
-		$this->dbtable = new Core_Model_DbTable_Auteur();
-	}
 
 	public function rowToObject(Zend_Db_Table_Row $row)
 	{
@@ -21,6 +15,14 @@ class Core_Model_Mapper_Auteur
 			   ->setNom($row['auteur_nom']);
 
 		return $auteur;
+	}
+
+	public function objectToRow(Core_Model_Interface $auteur)
+	{
+		return array(
+			'auteur_id' => $auteur->getId(),
+			'auteur_nom' => $auteur->getNom(),
+		);
 	}
 
 }

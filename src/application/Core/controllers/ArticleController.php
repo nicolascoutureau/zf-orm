@@ -85,9 +85,52 @@ class Core_ArticleController extends Zend_Controller_Action
 
 	public function categorieviewAction()
 	{
-		
+		$categorieId = $this->getRequest()->getParam('id');
+		if(0 === $categorieId){
+			throw new Zend_Controller_Action_Exception("categorie introuvable", 404);
+		}
+
+		$this->view->articles = $this->blogSvc->fetchArticlesByCategorie($categorieId);
+		if(!$this->view->articles){
+			throw new Zend_Controller_Action_Exception("categorie introuvable", 404);
+		}
+
+		$this->view->categorie = $this->blogSvc->findCategorie($categorieId);
+
 	}
 
+
+	public function addarticleAction()
+	{
+		$form = new Core_Form_AddArticle();
+		$form->setAction('')->setMethod(Zend_Form::METHOD_POST);
+
+		// Si on a un POST
+		if($this->getRequest()->isPost()){
+			// Si c'est valide
+			if($form->isValid($this->getRequest()->getPost())){
+				$data = $form->getValues();
+				var_dump($data);
+
+				$newArticle = new Core_Model_Article();
+
+				$categorie = new Core_Model_Categorie();
+				$categorie->setId($data['categorie']);
+
+				$auteur = new Core_Model_Auteur();
+				$auteur->setId($data['auteur']);
+
+				$newArticle->setTitle($data['title'])
+						   ->setCategorie($categorie)
+						   ->setContent($data['content'])
+						   ->setAuteur($auteur);
+
+				$this->blogSvc->saveArticle($newArticle);
+			}
+		}
+
+		$this->view->form = $form;
+	}
 
 
 }

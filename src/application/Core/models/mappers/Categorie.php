@@ -21,9 +21,6 @@ class Core_Model_Mapper_Categorie extends Core_Model_Mapper_MapperAbstract
 		$mapperArticle = new Core_Model_Mapper_Article;
 		$article = $mapperArticle->rowToObject($rowArticle);*/
 
-
-
-
 		return $categorie;
 	}
 
