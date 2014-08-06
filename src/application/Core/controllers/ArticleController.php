@@ -110,7 +110,6 @@ class Core_ArticleController extends Zend_Controller_Action
 			// Si c'est valide
 			if($form->isValid($this->getRequest()->getPost())){
 				$data = $form->getValues();
-				var_dump($data);
 
 				$newArticle = new Core_Model_Article();
 
