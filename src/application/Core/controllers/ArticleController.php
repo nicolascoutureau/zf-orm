@@ -80,10 +80,12 @@ class Core_ArticleController extends Zend_Controller_Action
 
 	public function categoriesAction()
 	{
-
 		$this->view->categories = $this->blogSvc->fetchCategories();
-		
+	}
 
+	public function categorieviewAction()
+	{
+		
 	}
 
 
