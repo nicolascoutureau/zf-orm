@@ -65,8 +65,16 @@
             <?= $this->navigation()->menu()->setUlClass('main-nav') ?>
         </nav>
 
+        
         <main>
-        		<?php echo $this->layout()->content; ?>
+            <nav class="breadcrumbs">
+                <?= $this->navigation()
+                         ->breadcrumbs()
+                         ->setMinDepth(0)
+                         ->setRenderInvisible(true)
+                         ->setSeparator(' / ') ?>
+            </nav>
+            <?php echo $this->layout()->content; ?>
         </main>
 
         <!-- build:js scripts/main.min.js -->

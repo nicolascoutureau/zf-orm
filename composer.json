@@ -13,7 +13,9 @@
 	"autoload": {
 		"psr-0" : {
 			"Iplib" : "library/ip",
-			"Model" : "library/ZFExt"
+			"Model" : "library/ZFExt",
+			"Core_Model" : "./application/Core/Models"
+			
 		}
 	}
 }

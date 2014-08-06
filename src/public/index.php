@@ -22,6 +22,8 @@ if('development' === APP_ENV){
 	set_exception_handler(array('Iplib\Error', 'handleException'));
 	set_error_handler(array('Iplib\Error', 'handleError'));
 }
+
+set_include_path(get_include_path() . PATH_SEPARATOR . APP_PATH);
 	
 
 $application = new Zend_Application(
