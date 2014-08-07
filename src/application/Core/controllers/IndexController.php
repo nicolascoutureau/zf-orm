@@ -37,7 +37,6 @@ class Core_IndexController extends Zend_Controller_Action
 				$login = $form->getValue('login');
 				$password = $form->getValue('password');
 
-
 				$adapter = new Zend_Auth_Adapter_DbTable();
 				$adapter->setTableName('user')
 						->setIdentityColumn('user_login')
