@@ -4,7 +4,7 @@
 * 	
 */
 class Core_Model_Mapper_Auteur extends Core_Model_Mapper_MapperAbstract
-{	
+{
 
 
 

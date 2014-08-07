@@ -17,6 +17,22 @@ class Core_Model_Categorie implements Core_Model_Interface
 
 	private $articles = array();
 
+    public function getResourceId()
+    {
+        switch($this->name){
+            case 'pokemon':
+                return 'categorie8ans';
+                break;
+            case 'xxx':
+                return 'categorie18ans';
+                break;
+            default:
+                return 'categorie';
+                break;
+
+        }
+    }
+
 
     /**
      * Gets the value of id.

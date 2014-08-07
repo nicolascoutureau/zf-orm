@@ -9,11 +9,17 @@
 	<div class="container">
 
 		<!-- Navbar -->
-		<?= $this->navigation()->menu()->setPartial(array('navigation/menu.phtml', 'Core')) ?>
-		
+
+
+
+		<?= $this->navigation()
+                 ->menu()
+                 ->setPartial(array('navigation/menu.phtml', 'Core')) ?>
+
 		<!-- breadcrumb -->
 		<ol class="breadcrumb">
-			    <?= $this->navigation()
+
+                <?= $this->navigation()
 			             ->breadcrumbs()
 			             ->setMinDepth(0)
 			             ->setRenderInvisible(true)
